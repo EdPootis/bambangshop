@@ -89,5 +89,15 @@ This is the place for you to write reflections:
    Menurut saya tetap perlu digunakan DashMap daripada menggunakan *Singleton pattern*. Ini karena  DashMap sudah bersifat *thread-safe* sehingga tidak diperlukan *handling* *multi-thread* jika menggunakan DashMap. Walaupun begitu, *singleton pattern* tetap bisa digunakan dengan tambahan kita harus membuat implementasi yang *thread-safe* secara manual menggunakan alat seperti Mutex dan HashMap. Keduanya juga tidak ekslusif dan lebih direkomendasikan jika *singleton pattern* digunakan bersama dengan DashMap.
 
 #### Reflection Publisher-2
+1. In the Model-View Controller (MVC) compound pattern, there is no "Service" and "Repository". Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate "Service" and "Repository" from a Model? <br>
+   "Service" dan "Repository" perlu dipisahkan agar *design principle* dapat terpenuhi, salah satunya adalah *Single Responsibility Principle* (SRP). Jika "Service" dan "Repository" digabung ke dalam "Model", maka ""Model" juga akan menangani penyimpanan data dan logika bisnis sehingga "Model" memiliki lebih dari 1 tanggung jawab dan bertentangan dengan SRP. Dengan pemisahan yang dilakukan, modul "Repository" dan "Service" masing-masing fokus pada tujuannya. Dengan ini kode akan lebih mudah di *maintain*.
+
+
+2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model? <br>
+   Jika hal itu dilakukan, maka kode "Model" akan menjadi sangat kompleks karena selain berisi kode *struct* modelnya, ia juga akan berisi kode untuk penyimpanan dan logikanya. Akibatnya kode akan sulit di-*maintain* karena akan menyebabkan modul saling terhubung (*tightly coupled*) sehingga sangat rentan terhadap bug. Dampak yang lain adalah kesulitan kode akan sulit diuji, karena dalam sekali tes dilakukan pada suatu modul besar yang memiliki banyak fungsi.
+
+
+3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects. <br>
+   Postman menurut saya akan membantu dalam pembuatan aplikasi web. Dengan Postman saya dapat melakukan pengecekan *endpoint-endpoint* yang ada pada aplikasi (beserta mengedit info yang dikirim) dan melihat responsnya, yang bisa berupa halaman HTML atau data JSON/XML jika yang diakses adalah *API endpoint*. Pada Postman selain melakukan permintaan HTTP (GET, POST, DELETE, PATCH, dll), ada protocol lain yang didukung juga seperti gRPC dan WebSocket.
 
 #### Reflection Publisher-3
