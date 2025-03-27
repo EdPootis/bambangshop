@@ -101,3 +101,12 @@ This is the place for you to write reflections:
    Postman menurut saya akan membantu dalam pembuatan aplikasi web. Dengan Postman saya dapat melakukan pengecekan *endpoint-endpoint* yang ada pada aplikasi (beserta mengedit info yang dikirim) dan melihat responsnya, yang bisa berupa halaman HTML atau data JSON/XML jika yang diakses adalah *API endpoint*. Pada Postman selain melakukan permintaan HTTP (GET, POST, DELETE, PATCH, dll), ada protocol lain yang didukung juga seperti gRPC dan WebSocket.
 
 #### Reflection Publisher-3
+1. Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use? <br>
+   Pada tutorial ini, variasi *Observer Pattern* yang digunakan adalah *push model* di mana *publisher* akan melakukan *push* data/notifikasi ke seluruh *subscriber* yang meng-*subscribe* jenis produk tertentu apabila terdapat *event*.
+
+2. What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull) <br>
+   Jika digunakan *pull model*, maka pengguna akan melakukan *pull* data di saat yang mereka inginkan. Kelebihannya pengguna dapat memilih kapan akan menerima notifikasi dan juga bisa lebih efisien misalkan banyak *subscriber* yang sudah tidak aktif sehingga permintaan notifikasi berkurang, dibandingkan *push model* yang selalu memberikan notifikasi terhadap setiap *subscriber* (aktif/tidak aktif). Kekurangannya adalah pada modul *subscriber* harus menangani logika pengambilan data sehingga menambah kompleksitas kode dan *coupling* karena *subscriber* harus tau data apa yang diperlu diambil dari *publisher*. Lalu performa juga dapat menurun jika *subscriber* meminta data berulang-ulang.
+
+3. Explain what will happen to the program if we decide to not use multi-threading in the notification process. <br>
+   Jika tidak digunakan *multi-threading*, dan jika ada banyak *subscriber* yang harus dikirimkan notifikasi maka proses pengiriman notifikasi akan secara *sequential* atau berurutan yang dapat menyebabkan waktu *delay* sehingga pengiriman notifikasi ke seluruh *subscriber* tidak *real-time*, melainkan melalui antrian. Akibatnya proses yang meng-*trigger* notifikasi akan menunggu proses pemberian notifikasi selesai sehingga membuat sistem *overall* lebih tidak efisien.
+
